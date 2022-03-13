@@ -1,5 +1,5 @@
 <template>
-  <ion-app>
+  <ion-app class="scanner-hide">
     <ion-router-outlet />
   </ion-app>
 </template>
