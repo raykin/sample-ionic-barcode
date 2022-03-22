@@ -11,7 +11,6 @@
     </ion-header>
     <ion-content :fullscreen="true">
 
-			<div class="scanner-ui"></div>
 			<div v-if="scanResult">
 				<p class="ion-padding">{{scanResult}}</p>
 				<ion-button class="ion-margin-start" color="primary" @click="read()">Browser</ion-button>
