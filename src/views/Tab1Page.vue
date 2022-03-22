@@ -13,7 +13,7 @@
 
 			<div v-if="scanResult">
 				<p class="ion-padding">{{scanResult}}</p>
-				<ion-button class="ion-margin-start" color="primary" @click="read()">Browser</ion-button>
+				<ion-button class="ion-margin-start" color="primary" @click="readWithSafari()">Browser</ion-button>
 			</div>
 
     </ion-content>
@@ -21,25 +21,29 @@
 </template>
 
 <script lang="ts">
-		import { defineComponent } from 'vue';
+	import { defineComponent } from 'vue';
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonButtons } from '@ionic/vue';
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 import { Browser } from '@capacitor/browser';
+import { AppLauncher } from '@capacitor/app-launcher';
 
 export default  defineComponent({
-		name: 'Tab1Page',
-		ionViewWillEnter() {
-				BarcodeScanner.prepare();
-		},
-		components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButton, IonButtons },
-		data() {
-				return {
-						scanResult: 'http://www.sogou.com',
-						async read() {
-								await Browser.open({ url: this.scanResult });
-						},
-						async scan() {
-								BarcodeScanner.hideBackground(); // make background of WebView transparent
+	name: 'Tab1Page',
+	ionViewWillEnter() {
+		BarcodeScanner.prepare();
+	},
+	components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButton, IonButtons },
+	data() {
+		return {
+			scanResult: 'http://www.baidu.com',
+			async read() {
+				await Browser.open({ url: this.scanResult });
+			},
+			async readWithSafari() {
+				await AppLauncher.openUrl({ url: this.scanResult });
+			},
+			async scan() {
+				BarcodeScanner.hideBackground(); // make background of WebView transparent
 								console.log('CLick scan');
 
 								document.body.classList.add("qrscanner"); // add the qrscanner class to body

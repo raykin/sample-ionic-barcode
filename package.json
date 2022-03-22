@@ -12,6 +12,7 @@
   "dependencies": {
     "@capacitor-community/barcode-scanner": "^2.1.0",
     "@capacitor/app": "1.1.1",
+    "@capacitor/app-launcher": "^1.0.9",
     "@capacitor/browser": "^1.0.7",
     "@capacitor/core": "3.4.3",
     "@capacitor/haptics": "1.1.4",
